@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Works Compound — Flow Diagram</title>
+<style>
+  :root { --rule: #c8c0b5; --ink-soft: #5a4a3a; --mono: 'IBM Plex Mono',ui-monospace,monospace; }
+  body { margin: 0; padding: 32px; background: #efeae1; font-family: var(--mono); }
+  main { max-width: 1320px; margin: 0 auto; }
+  h1 { font-family: 'IBM Plex Serif', Georgia, serif; font-size: 28px; color: #26221d; margin: 0 0 4px; font-weight: 500; }
+  p.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 16px; }
+  p.hint { font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">13 · Compound flow</p>
+  <h1>How a chunk moves through the compound.</h1>
+  <p class="hint">Click diagram to view at full size</p>
+  <svg id="flow-svg" viewBox="0 0 1320 1000" xmlns="http://www.w3.org/2000/svg" role="img" tabindex="0" aria-label="Works compound data flow diagram" style="width:100%;max-width:1320px;display:block;margin:8px 0 32px;border:1px solid var(--rule);cursor:zoom-in;background:#f7f3ec;">
+  <defs>
+    <marker id="cf-end" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#8c5a2b"/></marker>
+    <marker id="gov-end" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" fill="#26221d"/></marker>
+    <marker id="rej-end" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#8c5a2b"/></marker>
+  </defs>
+
+  <rect x="16" y="16" width="1288" height="968" fill="none" stroke="#c8c0b5" stroke-width="1" stroke-dasharray="6 5"/>
+  <text x="36" y="42" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="13" fill="#5a4a3a" letter-spacing="2">ACTORS — Human · Agent · Automated · External</text>
+
+  <!-- Intake -->
+  <text x="240" y="78" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">submit ↓</text>
+  <rect x="80" y="92" width="320" height="138" fill="#f7f3ec" stroke="#26221d" stroke-width="1.75"/>
+  <text x="240" y="120" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 01</text>
+  <text x="240" y="160" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="28" fill="#26221d">Intake</text>
+  <text x="240" y="194" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">CRC verify · structural check</text>
+  <text x="240" y="214" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">chunk admit · financial ID</text>
+
+  <!-- Bench -->
+  <rect x="480" y="106" width="360" height="110" fill="#f0ece4" stroke="#8c5a2b" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="660" y="134" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 04</text>
+  <text x="660" y="170" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="24" fill="#26221d">Bench</text>
+  <text x="660" y="198" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">actor working memory</text>
+
+  <!-- Dispatch + upward exit arrow -->
+  <line x1="1080" y1="84" x2="1080" y2="50" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="1098" y="70" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">deliver ↑</text>
+  <rect x="920" y="92" width="320" height="138" fill="#f7f3ec" stroke="#26221d" stroke-width="1.75"/>
+  <text x="1080" y="120" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 07</text>
+  <text x="1080" y="160" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="28" fill="#26221d">Dispatch</text>
+  <text x="1080" y="194" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">delivery · D deliver event</text>
+  <text x="1080" y="214" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">archives to Vault after delivery</text>
+
+  <!-- Stream band -->
+  <rect x="60" y="270" width="1220" height="90" fill="#ede9e2" stroke="#26221d" stroke-width="1.75"/>
+  <text x="84" y="304" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="14" fill="#26221d" font-weight="700" letter-spacing="3.5">STREAM</text>
+  <text x="200" y="304" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12.5" fill="#5a4a3a">— append-only log  ·  event bus  ·  replay engine  ·  all buildings emit here</text>
+  <text x="84" y="338" font-family="'IBM Plex Serif',Georgia,serif" font-size="16" fill="#26221d">Pacioli guarantee: no event modified or deleted   ·   Hollerith encoding:  ts  op  a  b  ctx</text>
+
+  <!-- Store -->
+  <rect x="80" y="410" width="320" height="170" fill="#f7f3ec" stroke="#26221d" stroke-width="1.25"/>
+  <text x="240" y="440" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 02</text>
+  <text x="240" y="482" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="28" fill="#26221d">Store</text>
+  <text x="240" y="520" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">Row × Level × Bin</text>
+  <text x="240" y="546" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">addressable working storage</text>
+
+  <!-- Gate (wider, taller) -->
+  <rect x="480" y="410" width="360" height="370" fill="#e8e3d8" stroke="#26221d" stroke-width="2.25"/>
+  <text x="660" y="440" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 06</text>
+  <text x="660" y="482" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="30" fill="#26221d">Gate</text>
+  <text x="660" y="506" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">stateless decision point</text>
+  <line x1="500" y1="524" x2="820" y2="524" stroke="#26221d" stroke-width="0.75"/>
+  <text x="510" y="556" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="13" fill="#26221d" font-weight="700">→ approve</text>
+  <text x="650" y="556" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11.5" fill="#5a4a3a">chunk → Mill → Dispatch</text>
+  <text x="510" y="592" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="13" fill="#26221d" font-weight="700">→ archive</text>
+  <text x="650" y="592" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11.5" fill="#5a4a3a">chunk → Vault, G archive</text>
+  <text x="510" y="628" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="13" fill="#26221d" font-weight="700">→ reject</text>
+  <text x="650" y="628" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11.5" fill="#5a4a3a">G reject → Stream</text>
+  <text x="510" y="664" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="13" fill="#26221d" font-weight="700">→ hold</text>
+  <text x="650" y="664" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11.5" fill="#5a4a3a">S hold → Stream, waits</text>
+  <text x="510" y="700" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="13" fill="#26221d" font-weight="700">→ reroute</text>
+  <text x="650" y="700" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11.5" fill="#5a4a3a">new destination assigned</text>
+  <line x1="500" y1="730" x2="820" y2="730" stroke="#26221d" stroke-width="0.5" stroke-dasharray="3 3"/>
+  <text x="660" y="758" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">Right of Assembly — no exit without Gate</text>
+
+  <!-- Barrel -->
+  <rect x="920" y="410" width="320" height="170" fill="#f7f3ec" stroke="#26221d" stroke-width="1.25"/>
+  <text x="1080" y="440" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 05</text>
+  <text x="1080" y="482" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="28" fill="#26221d">Barrel</text>
+  <text x="1080" y="520" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">stored programs</text>
+  <text x="1080" y="546" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">orchestrates multi-step ops</text>
+
+  <!-- Vault -->
+  <rect x="80" y="620" width="320" height="140" fill="#f7f3ec" stroke="#26221d" stroke-width="1.25"/>
+  <text x="240" y="650" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 09</text>
+  <text x="240" y="692" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="28" fill="#26221d">Vault</text>
+  <text x="240" y="728" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">permanent archive — write-once</text>
+
+  <!-- Office -->
+  <rect x="920" y="620" width="320" height="140" fill="#f7f3ec" stroke="#26221d" stroke-width="1.25"/>
+  <text x="1080" y="650" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 08</text>
+  <text x="1080" y="692" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="28" fill="#26221d">Office</text>
+  <text x="1080" y="728" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">tokens · registry · veto</text>
+
+  <!-- Mill -->
+  <rect x="480" y="810" width="360" height="100" fill="#f7f3ec" stroke="#26221d" stroke-width="1.25"/>
+  <text x="660" y="836" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="11" fill="#8c5a2b" letter-spacing="3">B / 03</text>
+  <text x="660" y="872" text-anchor="middle" font-family="'IBM Plex Serif',Georgia,serif" font-size="26" fill="#26221d">Mill</text>
+  <text x="660" y="896" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">lens pipeline transform</text>
+
+  <!-- Intake → Stream -->
+  <line x1="240" y1="230" x2="240" y2="270" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="252" y="256" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">T post</text>
+
+  <!-- Stream → Gate -->
+  <line x1="660" y1="360" x2="660" y2="410" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="672" y="392" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">chunk route</text>
+
+  <!-- Gate → Mill -->
+  <line x1="660" y1="780" x2="660" y2="810" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="672" y="800" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">G approve</text>
+
+  <!-- Mill → Dispatch (label moved to white space between Stream and Barrel) -->
+  <polyline points="840,860 880,860 880,161 920,161" fill="none" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="895" y="390" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">transformed chunk → Dispatch</text>
+
+  <!-- Gate → Vault (G archive): around left of Store -->
+  <polyline points="480,440 440,440 440,395 50,395 50,690 80,690" fill="none" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="60" y="388" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">G archive → around Store → Vault</text>
+
+  <!-- G reject loop — straight vertical end so arrow points up cleanly -->
+  <path d="M540,410 C500,392 480,378 480,362" fill="none" stroke="#8c5a2b" stroke-width="1.75" stroke-dasharray="4 3" marker-end="url(#rej-end)"/>
+  <text x="448" y="398" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">G reject → Stream</text>
+
+  <!-- Dispatch → Vault after delivery (long dashed, around outside) -->
+  <polyline points="1240,225 1290,225 1290,940 30,940 30,690 80,690" fill="none" stroke="#8c5a2b" stroke-width="1.75" stroke-dasharray="5 4" marker-end="url(#cf-end)"/>
+  <text x="540" y="932" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#8c5a2b">D deliver → Vault archive after delivery</text>
+
+  <!-- Governance: Barrel → Gate -->
+  <line x1="920" y1="470" x2="840" y2="470" stroke="#26221d" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#gov-end)"/>
+  <text x="856" y="462" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#26221d">program ←</text>
+
+  <!-- Governance: Office → Gate -->
+  <line x1="920" y1="690" x2="840" y2="690" stroke="#26221d" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#gov-end)"/>
+  <text x="856" y="682" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#26221d">veto · token</text>
+
+  <!-- Stream emission ticks -->
+  <line x1="160" y1="410" x2="160" y2="360" stroke="#6a7a38" stroke-width="1.25" stroke-dasharray="3 3"/>
+  <line x1="160" y1="620" x2="160" y2="360" stroke="#6a7a38" stroke-width="1.25" stroke-dasharray="3 3"/>
+  <line x1="1160" y1="410" x2="1160" y2="360" stroke="#6a7a38" stroke-width="1.25" stroke-dasharray="3 3"/>
+  <line x1="1160" y1="620" x2="1160" y2="360" stroke="#6a7a38" stroke-width="1.25" stroke-dasharray="3 3"/>
+  <line x1="740" y1="810" x2="740" y2="360" stroke="#6a7a38" stroke-width="1.25" stroke-dasharray="3 3"/>
+
+  <!-- Legend -->
+  <line x1="60" y1="958" x2="1280" y2="958" stroke="#c8c0b5" stroke-width="0.75"/>
+  <line x1="80" y1="980" x2="128" y2="980" stroke="#8c5a2b" stroke-width="2.25" marker-end="url(#cf-end)"/>
+  <text x="138" y="985" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">content flow (chunk path)</text>
+  <line x1="380" y1="980" x2="428" y2="980" stroke="#8c5a2b" stroke-width="1.75" stroke-dasharray="5 4" marker-end="url(#rej-end)"/>
+  <text x="438" y="985" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">post-delivery archive</text>
+  <line x1="660" y1="980" x2="708" y2="980" stroke="#26221d" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#gov-end)"/>
+  <text x="718" y="985" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">governance (Barrel · Office → Gate)</text>
+  <line x1="1050" y1="980" x2="1098" y2="980" stroke="#6a7a38" stroke-width="1.25" stroke-dasharray="3 3"/>
+  <text x="1108" y="985" font-family="'IBM Plex Mono',ui-monospace,monospace" font-size="12" fill="#5a4a3a">event emission → Stream</text>
+</svg>
+
+  <div id="flow-zoom" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(38,34,29,0.85);padding:24px;align-items:center;justify-content:center;cursor:zoom-out;" role="dialog" aria-modal="true" aria-label="Flow diagram, large view">
+    <div style="position:relative;width:100%;max-width:1700px;max-height:96vh;">
+      <button type="button" id="flow-zoom-close" aria-label="Close large view" style="position:absolute;top:-44px;right:0;background:transparent;border:1px solid #f7f3ec;color:#f7f3ec;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;">Close ✕</button>
+      <div id="flow-zoom-shell" style="background:#f7f3ec;border:1px solid #26221d;max-height:96vh;overflow:auto;"></div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var svg = document.getElementById('flow-svg');
+      var modal = document.getElementById('flow-zoom');
+      var shell = document.getElementById('flow-zoom-shell');
+      var closeBtn = document.getElementById('flow-zoom-close');
+      if (!svg || !modal) return;
+      function open(){
+        shell.innerHTML = '';
+        var clone = svg.cloneNode(true);
+        clone.removeAttribute('id');
+        clone.removeAttribute('tabindex');
+        clone.style.cssText = 'width:100%;height:auto;display:block;cursor:default;';
+        shell.appendChild(clone);
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){ modal.style.display = 'none'; document.body.style.overflow = ''; }
+      svg.addEventListener('click', open);
+      svg.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+      closeBtn.addEventListener('click', function(e){ e.stopPropagation(); close(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.style.display === 'flex') close(); });
+    })();
+  </script>
+</main>
+</body>
+</html>
